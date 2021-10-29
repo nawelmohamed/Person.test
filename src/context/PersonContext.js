@@ -1,5 +1,5 @@
 import CreateDataContext from "./CreateDataContext";
-import airtable from "../../API/airtable";
+import airtable from "../API/airtable";
 
 
 
@@ -15,8 +15,8 @@ const personReducer = (state,action)=> {
 
 const getPersons = dispatch => {
     return async ()=> {
-        const response= await airtable.get('/persons')
-        dispatch({type: "get_persons", payload: response.data})
+        const response= await airtable.get('/person')
+        dispatch({type: "get_persons", payload: response.data["records"]})
     }
 }
 

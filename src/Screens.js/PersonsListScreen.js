@@ -15,11 +15,11 @@ const PersonListScreen = ({navigation}) => {
          <Text>Persons List</Text>
          <FlatList
            data={state}
-           keyExtractor={(person)=>person.Name}
+           keyExtractor={(person)=>person['fields']['Name']}
            renderItem={({item})=>{
-              return <TouchableOpacity onPress={()=>navigation.navigate("Informations", {Name: item.Name})}>
+              return <TouchableOpacity onPress={()=>navigation.navigate("Informations", {Name: item['fields']['Name']})}>
 
-              <Text>{item.Name}</Text>
+              <Text>{item['fields']['Name']}</Text>
               </TouchableOpacity>
            }}
          
