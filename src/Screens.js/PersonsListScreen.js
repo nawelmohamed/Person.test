@@ -12,14 +12,15 @@ const PersonListScreen = ({navigation}) => {
 
       return (
      <View>
-         <Text>Persons List</Text>
+         <Text style={styles.title}>Persons List</Text>
          <FlatList
            data={state}
-           keyExtractor={(person)=>person['fields']['Name']}
+           keyExtractor={(person)=>person['id']}
            renderItem={({item})=>{
-              return <TouchableOpacity onPress={()=>navigation.navigate("Informations", {Name: item['fields']['Name']})}>
-
-              <Text>{item['fields']['Name']}</Text>
+              return <TouchableOpacity onPress={()=>navigation.navigate("Informations", {id: item['fields']['Name']})}>
+                  <View style={styles.row}>
+                    <Text>{item['fields']['Name']}</Text>
+                  </View>
               </TouchableOpacity>
            }}
          
@@ -29,5 +30,21 @@ const PersonListScreen = ({navigation}) => {
     
       )
 };
+const styles= StyleSheet.create ({
+  row: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+      padding: 20,
+      borderWidth: 1,
+      borderColor: "gray"
+  },
+  title: {
+      fontSize: 18,
+      fontWeight:'bold',
+      textAlign:'center'
+  },
+  
+
+});
 
 export default PersonListScreen;

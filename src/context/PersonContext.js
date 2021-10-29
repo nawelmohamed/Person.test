@@ -16,7 +16,10 @@ const personReducer = (state,action)=> {
 const getPersons = dispatch => {
     return async ()=> {
         const response= await airtable.get('/person')
+        console.log(response.data)
         dispatch({type: "get_persons", payload: response.data["records"]})
+        
+
     }
 }
 
